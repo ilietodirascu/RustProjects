@@ -32,7 +32,7 @@ fn main() {
     let converter = GenericConverter::new();
 
     for value in args.values.iter() {
-        let result = converter.convert(*value, &**from_unit, &**to_unit);
+        let result = converter.convert(*value, from_unit, to_unit);
         let formatted_value = format!("{:.4}", value);
         let formatted_result = format!("{:.4}", result);
 
