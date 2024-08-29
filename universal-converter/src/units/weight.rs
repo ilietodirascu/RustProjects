@@ -9,18 +9,6 @@ pub enum Weight {
     Ounce(f64),     // 1 oz = 28.3495231 g
 }
 
-impl Weight {
-    pub fn name(&self) -> &str {
-        match self {
-            Weight::Kilogram(_) => "kg",
-            Weight::Gram(_) => "g",
-            Weight::Milligram(_) => "mg",
-            Weight::Pound(_) => "lb",
-            Weight::Ounce(_) => "oz",
-        }
-    }
-}
-
 impl Unit for Weight {
     fn to_gold_standard(&self, value: f64) -> f64 {
         match self {
