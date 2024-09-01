@@ -32,6 +32,7 @@ pub enum ConversionType {
     Weight,
     Currency,
     Time,
+    Data,
 }
 impl ConversionType {
     pub fn get_hashmap(&self) -> HashMap<String, Measurement> {
@@ -80,6 +81,19 @@ impl ConversionType {
                     get_exchange_rates(&json_path, max_currency_data_age, &api_url, &api_key);
 
                 measurements = exchange_rates; // Assign the fetched exchange rates to `measurements`
+            }
+            ConversionType::Data => {
+                measurements.insert("b".to_string(), Measurement::new(1.0)); // 1 Byte = 1 Byte
+                measurements.insert("kb".to_string(), Measurement::new(1.0 / 1024.0)); // 1 KB = 1024 Bytes
+                measurements.insert("mb".to_string(), Measurement::new(1.0 / (1024.0 * 1024.0))); // 1 MB = 1024 KB
+                measurements.insert(
+                    "gb".to_string(),
+                    Measurement::new(1.0 / (1024.0 * 1024.0 * 1024.0)),
+                ); // 1 GB = 1024 MB
+                measurements.insert(
+                    "tb".to_string(),
+                    Measurement::new(1.0 / (1024.0 * 1024.0 * 1024.0 * 1024.0)),
+                ); // 1 TB = 1024 GB
             }
         }
         measurements
