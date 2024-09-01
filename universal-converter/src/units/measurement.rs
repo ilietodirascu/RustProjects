@@ -12,10 +12,10 @@ impl Measurement {
 
 impl Unit for Measurement {
     fn to_gold_standard(&self, value: f64) -> f64 {
-        value * self.multiplier
+        value / self.multiplier
     }
 
     fn from_gold_standard(&self, value: f64) -> f64 {
-        value / self.multiplier
+        value * self.multiplier
     }
 }

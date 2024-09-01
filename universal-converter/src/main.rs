@@ -1,4 +1,5 @@
 use clap::Parser;
+use dotenv::dotenv;
 use universal_converter::{
     args::{Args, ConversionType},
     converters::generic::GenericConverter,
@@ -6,6 +7,7 @@ use universal_converter::{
 };
 
 fn main() {
+    dotenv().ok();
     let args = Args::parse();
 
     let Some(conversion_type) = args.conversion_type.or_else(|| {
