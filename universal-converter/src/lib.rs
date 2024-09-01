@@ -7,7 +7,9 @@ pub mod converters {
 }
 
 pub mod units {
-    pub mod distance;
-    pub mod weight;
+    pub mod measurement;
 }
 pub mod args;
+pub mod currency {
+    pub mod currency_helper;
+}

@@ -1,4 +1,5 @@
 use clap::Parser;
+use dotenv::dotenv;
 use universal_converter::{
     args::{Args, ConversionType},
     converters::generic::GenericConverter,
@@ -6,6 +7,7 @@ use universal_converter::{
 };
 
 fn main() {
+    dotenv().ok();
     let args = Args::parse();
 
     let Some(conversion_type) = args.conversion_type.or_else(|| {
@@ -32,7 +34,7 @@ fn main() {
     let converter = GenericConverter::new();
 
     for value in args.values.iter() {
-        let result = converter.convert(*value, &**from_unit, &**to_unit);
+        let result = converter.convert(*value, from_unit, to_unit);
         let formatted_value = format!("{:.4}", value);
         let formatted_result = format!("{:.4}", result);
 

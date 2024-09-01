@@ -100,3 +100,11 @@ b) The type is valid, check if the units are valid. Each conversion type such as
 
 If the type is provided, the hashmap of the appropriate type is queried. If not a vec of all these hashmaps is iterated and if there is only one hashmap whose key list contains both the first and second argument the conversion is made.
 If not ambiguity error is thrown and the user is prompted to increase the specificity.
+
+### Currency
+
+This logic applies for when the user is attempting to convert currencies only.
+
+1. Check if currencies.json exists, is not empty, and is not older than 24h
+2. If any statement from 1. is false make an api call to update/get the currencies and update the file.
+3. Implement a "static" function that would process the json file and return a hashmap of measurements and their respective keys.

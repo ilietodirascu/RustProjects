@@ -1,16 +1,26 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "type": "lldb",
-            "request": "launch",
-            "name": "Debug",
-            "program": "${workspaceFolder}/<executable file>",
-            "args": [],
-            "cwd": "${workspaceFolder}"
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug executable 'universal-converter'",
+      "cargo": {
+        "args": [
+          "build",
+          "--bin=universal-converter",
+          "--package=universal-converter"
+        ],
+        "filter": {
+          "name": "universal-converter",
+          "kind": "bin"
         }
-    ]
+      },
+      "args": ["MDL", "EUR", "1"],
+      "cwd": "${workspaceFolder}"
+    }
+  ]
 }
